@@ -44,14 +44,26 @@ public static void mouseScrollBy(WebDriver driver,WebElement element,WebElement 
 	Actions act=new Actions(driver);
 	act.moveToElement(element).scrollToElement(element1).click().build().perform();
 }
-//......................Screen shot.........................................
-public static void takesScreenshot(String filename) throws IOException
-{String path="D:\\velocity\\TripadvoisorScript\\test-output\\ScreenShot\\";
-	TakesScreenshot ts=(TakesScreenshot)driver;
-	File src = ts.getScreenshotAs(OutputType.FILE);
-	File des=new File(path+filename+".png");
-	FileHandler.copy(src, des);
-}
+//screenshot
+	public static void takeScreenShot(String filename) 
+	{
+		try 
+		{
+			String path = "C:\\Users\\ravik\\OneDrive\\Desktop\\30JulyProjectRepo\\Tripadvoisary\\TripadvoisaryProject\\test-output\\Screenshot\\";
+			TakesScreenshot ts = (TakesScreenshot)driver;
+			File src = ts.getScreenshotAs(OutputType.FILE);
+			
+			File des = new File(path+filename+".png");
+			FileHandler.copy(src, des);
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("IO Exception - file not found");
+			e.printStackTrace();
+		}
+		
+	}
+
 //.......................window handle...............................
 public static void windowHandle()
 {
